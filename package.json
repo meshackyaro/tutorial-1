@@ -1,0 +1,28 @@
+{
+  "name": "tutorial-1",
+  "version": "1.0.0",
+  "description": "a nodejs backend tutorial",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/meshackyaro/tutorial-1.git"
+  },
+  "author": "Maverick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meshackyaro/tutorial-1/issues"
+  },
+  "homepage": "https://github.com/meshackyaro/tutorial-1#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5",
+    "nodemon": "^3.1.11"
+  }
+}
