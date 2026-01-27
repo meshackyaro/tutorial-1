@@ -11,9 +11,11 @@ app.use(express.json());
 
 //import routes
 import userRoutes from './routes/user.routes.js';
+import postRoutes from './routes/post.rotes.js';
 
 //routes declaration/middleware
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/posts", postRoutes);   
 
 //exmaple routes --> http://localhost:3000/api/v1/users/register
 
