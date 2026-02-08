@@ -6,15 +6,16 @@ const registerUser = async (req, res) => {
 
         const { username, email, password } = req.body;
 
-        if (!username || !email || !password) {
-            return res.status(400).json({ message: "All fields are required" });
-        }
+        if (!username || !email || !password) res.status(400).json({
+            message: "All fields are required"
+        });
         
         // check if user already exists
         const existingUser = await User.findOne({ email: email.toLowerCase() });
-        if (existingUser) {
-            return res.status(400).json({ message: "User already exists!"});
-        }
+        if (existingUser) res.status(400).json({
+            message: "User already exists!"
+        });
+
 
         // create new user
         const newUser = await User.create({
@@ -23,16 +24,18 @@ const registerUser = async (req, res) => {
             password,
         });
 
-        return res.status(201).json({ 
+        res.status(201).json({ 
             message: "User registered successfully",
         });
 
         
     } catch (error) {
-        res.status(500).json({message: "Internal Server Error", error: error.message});
+        res.status(500).json({
+            message: "Internal Server Error", error: error.message
+        });
 
     }
-}
+};
 
 const loginUser = async ( req, res ) => {
 
@@ -45,14 +48,14 @@ const loginUser = async ( req, res ) => {
         });
         
         // check if user exists
-        if (!user) return res.status(404).json({
+        if (!user) res.status(404).json({
             message: "user not found"
         });
 
         // compare passwords
         const isMatch = await user.comparePassword(password);
         
-        if (!isMatch) return res.status(400).json({
+        if (!isMatch) res.status(400).json({
             message: "Invalid credentials"
         });
 
@@ -73,7 +76,7 @@ const loginUser = async ( req, res ) => {
         
     }
 
-}
+};
 
 const logoutUser = async ( req, res ) => {
     try {
@@ -84,9 +87,10 @@ const logoutUser = async ( req, res ) => {
             email: email.toLowerCase()
         });
 
-        if (!User) return res.status(404).json ({
+        if (!User) res.status(404).json ({
             message: "User not found"
         });
+
         res.status(200).json ({
             message: "Logout successfull"
         });
@@ -97,11 +101,11 @@ const logoutUser = async ( req, res ) => {
         });
         
     }
-}
+};
 
 
 export {
     registerUser,
     loginUser,
     logoutUser
-}
+};
